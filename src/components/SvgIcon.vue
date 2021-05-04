@@ -5,7 +5,7 @@
 	</svg>
 </template>
 
-<script>
+<script lang="ts">
 	export default {
 		name: "SvgIcon",
 		props: {
@@ -20,10 +20,10 @@
 			},
 		},
 		computed: {
-			iconPath() {
+			iconPath(): string {
 				return `#icon-${this.name}`;
 			},
-			className() {
+			className(): string {
 				return "svg-icon svg-icon--" + this.name;
 			},
 		},

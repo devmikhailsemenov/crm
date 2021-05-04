@@ -1,15 +1,22 @@
 <template>
-	<div :class="$s.item">
-		<UIButton>fgdfgdfg</UIButton>
-	</div>
+	<component :is="layout">
+		<router-view />
+	</component>
 </template>
 
 <script>
-	import { defineComponent } from 'vue';
+	import { defineComponent, computed } from 'vue';
+	import { useRoute } from 'vue-router'
+	import Login from '@/layouts/Login';
+	import Main from '@/layouts/Main';
 
 	export default defineComponent({
+		components: { Login, Main },
 		setup() {
-			return {};
+			const route = useRoute();
+			const layout = computed(() => route.meta?.layout ?? 'main');
+
+			return { layout };
 		},
 	});
 </script>
