@@ -6,14 +6,15 @@
 </template>
 
 <script lang="ts">
-	export default {
+    import { defineComponent } from 'vue';
+
+	export default defineComponent({
 		name: "SvgIcon",
 		props: {
 			name: {
 				type: String,
 				required: true,
 			},
-
 			title: {
 				type: String,
 				default: null,
@@ -27,7 +28,7 @@
 				return "svg-icon svg-icon--" + this.name;
 			},
 		},
-	};
+	})
 </script>
 
 <style>

@@ -10,29 +10,41 @@
                     <span>Вход в систему</span>
                     «Блокнот24»
                 </h1>
-                <div :class="s.fields"></div>
+                <div :class="s.fields">
+                    <UITextField
+                        v-model:value="val"
+                        :label="'erer'"
+                        :mask="PHONE_MASK"
+                    />
+                </div>
                 <div :class="s.formWarning">
                     Внимание! Логин и пароль передавать своим коллегам строго запрещено! 
                     Помните вы являетесь оператором по обработке персональных данных!
                 </div>
                 <UIButton width="248px" height="50px">Вход</UIButton>
-                <HoverLamp>
-                    <div>asdfdsaf</div>
-                </HoverLamp>
             </form>
         </div>
     </div>
 </template>
 
 <script>
-    import { defineComponent } from 'vue';
-    import HoverLamp from '@/components/HoverLamp';
+    import { defineComponent, ref } from 'vue';
+    import { PHONE_MASK } from '@/constants/masks';
 
     export default defineComponent({
         name: 'Auth',
-        components: { HoverLamp },
         setup() {
-            return {};
+            const val = ref('dfffffffff');
+
+            const inp = (event, ee) => {
+                console.log({ event })
+                val.value = event;
+            }
+            return {
+                PHONE_MASK,
+                val,
+                inp,
+            };
         },
     });
 </script>

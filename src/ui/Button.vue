@@ -1,17 +1,23 @@
 <template>
-	<component
-		:is="tag"
-		v-bind="$attrs"
-		:class="[
-			$s.button,
-			{
-				[$s[`button_${kind}`]]: kind,
-			},
-		]"
-		@click="$emit('click', $event)"
-	>
-		<slot />
-	</component>
+	<HoverLamp>
+		<template #default="{ classes, onMouseMove }">
+			<component
+				:is="tag"
+				v-bind="$attrs"
+				:class="[
+					$s.button,
+					{
+						[$s[`button_${kind}`]]: kind,
+					},
+					classes,
+				]"
+				@click="$emit('click', $event)"
+				@mousemove="onMouseMove"
+			>
+				<slot />
+			</component>
+		</template>
+	</HoverLamp>
 </template>
 
 <script lang="ts">
